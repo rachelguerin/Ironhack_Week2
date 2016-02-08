@@ -3,6 +3,7 @@ require './todo.rb'
 describe "Todo task list" do
 	before :each do
 		@task = Task.new("Walk the dog")
+		@todoList = TodoList.new("Rachel")
 	end
 	
 	it "Todo item returns content \'walk the dog\'" do
@@ -57,16 +58,68 @@ describe "Todo task list" do
 
 	end
 
-	it "check if the last task added has current ID " do
-		expect(@task.id).to eq(Task.get_current_id-1)
-	end
-
 	it "checks non-updated task update_at is nil" do
 		expect(@task.updated_at).to eq(nil)
 	end
 
-	it "task tracks last updated time" do
+	it "tracks last updated time for task" do
 		@task.update_content!("Walk the croc")
 		expect(@task.updated_at.asctime).to eq(Time.now.asctime)
+	end
+
+	it "creates todo list, returns an array" do
+		expect(@todoList.tasks).to be_an(Array)
+	end
+
+	it "adds a task to the list" do
+		@todoList.add_task(@task)
+		expect(@todoList.tasks[-1]).to eq(@task)
+	end
+
+	it "deletes a task by its ID" do
+		@todoList.add_task(@task)
+		@todoList.delete_task(@task.id)
+		expect(@todoList.tasks.include?(@task)).not_to eq(true)
+	end
+
+	it "finds a task via its ID" do
+		t1 = Task.new("Walk the milk")
+		t2 = Task.new("Buy the dog")
+		@todoList.add_task(t1)
+		@todoList.add_task(t2)
+		expect(@todoList.find_task_by_id(t1.id)).to eq(t1)
+	end
+
+	it "returns nil if a task is not found" do
+		expect(@todoList.find_task_by_id(10)).to eq(nil)
+	end
+
+	it "sorts by created_at" do
+		t1 = Task.new("Walk the milk")
+		t2 = Task.new("Buy the dog")
+		@todoList.add_task(t1)
+		@todoList.add_task(t2)
+		expect(@todoList.sort_by_created).to eq([t1,t2])
+	end
+
+	it "sorts by created_at in asc order" do
+		t1 = Task.new("Walk the milk")
+		t2 = Task.new("Buy the dog")
+		@todoList.add_task(t1)
+		@todoList.add_task(t2)
+		expect(@todoList.sort_by_created("ASC")).to eq([t1,t2])
+	end
+
+	it "sorts by created_at in desc order" do
+		t1 = Task.new("Walk the milk")
+		t2 = Task.new("Buy the dog")
+		@todoList.add_task(t1)
+		@todoList.add_task(t2)
+		expect(@todoList.sort_by_created("DESC")).to eq([t2,t1])
+	
+	end
+
+	it "sets a user to the todo list" do
+		expect(@todoList.user).to eq("Rachel")
 	end
 end
