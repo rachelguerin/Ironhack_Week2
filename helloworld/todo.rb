@@ -1,5 +1,5 @@
-class Todo
-	attr_reader :content, :id, :created_at
+class Task
+	attr_reader :content, :id, :created_at, :updated_at
 	@@current_id = 1
 	def initialize(content)
 		@content = content
@@ -7,6 +7,7 @@ class Todo
 		@@current_id += 1
 		@complete = false
 		@created_at = Time.now
+		@updated_at = nil
 	end
 
 	def complete?
@@ -21,4 +22,11 @@ class Todo
 		@complete = false
 	end	
 
+	def update_content! content
+		@updated_at = Time.now
+		@content = content
+	end
+	def self.get_current_id
+		@@current_id
+	end
 end
