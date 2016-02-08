@@ -48,4 +48,8 @@ describe "Todo list" do
 		expect(@todo.complete?).to be(false)
 	end
 
+	it "check task time" do
+		expect(@todo.created_at.asctime).to eq(Time.now.asctime)
+	end
+
 end
