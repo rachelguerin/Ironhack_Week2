@@ -1,42 +1,19 @@
-class Task
-	attr_reader :content, :id, :created_at, :updated_at
-	@@current_id = 1
-	def initialize(content)
-		@content = content
-		@id = @@current_id
-		@@current_id += 1
-		@complete = false
-		@created_at = Time.now
-		@updated_at = nil
-	end
+# require 'yaml/store'
 
-	def complete?
-		@complete == true 
-	end
-
-	def complete!
-		@complete = true
-	end
-
-	def make_incomplete!
-		@complete = false
-	end	
-
-	def update_content! content
-		@updated_at = Time.now
-		@content = content
-	end
-	def self.get_current_id
-		@@current_id
-	end
-end
 
 class TodoList
 	attr_reader :tasks, :user
 	def initialize(user)
+		# @todo_store = YAML::Store.new("./public/tasks.yml")
 		@tasks = []
 		@user = user
 	end
+
+	# def save
+	# 	@todo_store.transaction do
+	# 		@todo_store[@user] = @tasks
+	# 	end
+	# end
 
 	def add_task(task)
 		@tasks << task
@@ -59,7 +36,9 @@ class TodoList
 		end
 	end
 
+	# def load_tasks
 
+	# end
 end
 
 

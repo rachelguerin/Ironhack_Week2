@@ -1,0 +1,140 @@
+header {
+	color: #888800;
+	font-family: "Bitter";
+	font-size: 40px;
+	text-align: center;
+}
+
+header:hover {
+	background-color: #ffffff;
+}
+
+img {
+	width: 150px;
+	padding: 10px;
+}
+
+nav {
+	margin: auto;
+	width: 85%;
+	padding-bottom: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0000FF;
+    
+}
+
+a {
+	text-decoration: none;
+    color: #888800;
+}
+
+body {
+  	font-family: "Nunito";
+  	background-color: #c1c1c1;
+}
+
+
+h1 {
+	font-size: 40px;
+	margin: 0px 0px 10px 0px;
+}
+
+.niceParagraph, span {
+	font-family: "Baskerville";
+    font-size: smaller;
+    margin: 0px 0px 0px 0px;
+}
+
+.articleImageLeft {
+	float: left;
+}
+
+.articleImageRight {
+	float: right;
+}
+
+.articleContainer {
+	background-color: #f5e5e5;
+	padding: 0px 5px 0px 5px;
+	margin: auto;
+	width: 85%;
+	-webkit-box-shadow:10px 5px 5px #888888;
+  	-moz-box-shadow:10px 5px 5px #888888;
+  	box-shadow:10px 5px 5px #888888;
+}
+
+.articleContainer:hover {
+	background-color: #ffffff;
+}
+
+#authorLine {
+	font-size: 12px;
+	color: #0000ff;
+	padding: 0px 0px 0px 5px;
+}
+
+#finalParagraph {
+	font-style: italic;
+	padding: 0px 0px 5px 0px; 
+}
+
+table {
+	/*font-family: Helvetica, Arial;
+    font-size: smaller;*/
+    line-height: 150%;
+    /*width: 75%;
+    margin: 0 auto;*/
+}
+
+thead {
+	text-align: left;
+	font-style: italic;
+}
+
+tbody {
+
+}
+
+footer {
+	background-color: #444444;
+	padding: 30px 10px;
+	border-top: 5px solid #ffffff;
+	color: #ffffff;
+	font-family: Helvetica, Arial;
+    font-size: 10px;
+    font-style: italic;
+	width: 100%;
+}
+
+footer a:link {
+	color: #ffffff;	
+}
+footer a:visited {
+	color: #cccccc;
+}
+footer a:hover {
+	color: #999999;
+}
+
+ol {
+	text-align: center;
+	list-style-position:inside;
+	vertical-align: middle;
+	
+}
+
+ol li {
+	vertical-align: middle;
+	font-size: 20px;
+	font-family: "Baskerville";
+	font-weight: bolder;
+	color: #166D42;
+}
+
+ol li img {
+	vertical-align: middle;
+	width: 150px;
+}

@@ -1,9 +1,9 @@
 require './todo.rb'
+require './task.rb'
 
-describe "Todo task list" do
+describe "Tasks" do
 	before :each do
 		@task = Task.new("Walk the dog")
-		@todoList = TodoList.new("Rachel")
 	end
 	
 	it "Todo item returns content \'walk the dog\'" do
@@ -66,6 +66,14 @@ describe "Todo task list" do
 		@task.update_content!("Walk the croc")
 		expect(@task.updated_at.asctime).to eq(Time.now.asctime)
 	end
+end
+
+
+describe "Task to do list" do
+	before :each do
+		@task = Task.new("Walk the dog")
+		@todoList = TodoList.new("Rachel")
+	end
 
 	it "creates todo list, returns an array" do
 		expect(@todoList.tasks).to be_an(Array)
@@ -122,4 +130,8 @@ describe "Todo task list" do
 	it "sets a user to the todo list" do
 		expect(@todoList.user).to eq("Rachel")
 	end
+
+	# it "saves the todo list to YAML file" do
+	# 	# expect(@todoList.save).to 
+	# end
 end

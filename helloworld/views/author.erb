@@ -1,0 +1,22 @@
+<h1>My first Sinatra.</h1>
+<p>
+	<b>Author: </b>
+	Johnny Appleseed
+</p>
+
+<% if Date.today.monday? %>
+<p>
+Izzy Ironside is <strong>NOT</strong> a fan of Mondays like today.
+</p>
+
+<% end %>
+
+<% if Date.today.tuesday? %>
+<p>
+Johnny Appleseed <strong>LOVES</strong> days like today, because it's Tuesday.
+</p>
+
+<% end %>
+
+<p>
+Izzy Ironside was born on <%= Date.today %>.</p>

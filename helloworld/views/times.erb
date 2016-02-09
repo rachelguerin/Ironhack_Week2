@@ -1,0 +1,7 @@
+<h1>Times</h1>
+<% t = Time.now - (@hrs.to_i * 3600) %>
+
+<p>The time was <%= t.strftime("%A") %> <%= @hrs %> hours ago.</p>
+
+<p><small>Currently in the session:
+<b><%= session[:saved_value] %></b></small></p>
