@@ -5,22 +5,17 @@
 </head>
 <body>
   <form action="/calculate" method="POST">
-  <h1>Add</h1>
-	<input type="number" name="first_add" placeholder="1st number"> + 
-	<input type="number" name="second_add" placeholder="2nd number">
-	<button type="submit" name="operation" value="add">Add</button>
-  <h1>Subtract</h1>
-	<input type="number" name="first_sub" placeholder="1st number"> - 
-	<input type="number" name="second_sub" placeholder="2nd number">
+  <h1>Calculate:</h1>
+	<p><input type="number" name="first_num" placeholder="1st number" value="<%=@retrieved_val%>"> <input type="number" name="second_num" placeholder="2nd number"></p>
+	<p><button type="submit" name="operation" value="add">Add</button>
+  
 	<button type="submit" name="operation" value="sub">Subtract</button>
-  <h1>Multiply</h1>
-	<input type="number" name="first_mult" placeholder="1st number"> * 
-	<input type="number" name="second_mult" placeholder="2nd number">
+  
 	<button type="submit" name="operation" value="mult">Multiply</button>
-  <h1>Divide</h1>
-	<input type="number" name="first_div" placeholder="1st number"> / 
-	<input type="number" name="second_div" placeholder="2nd number">
-	<button type="submit" name="operation" value="div">Divide</button>
+  
+	<button type="submit" name="operation" value="div">Divide</button></p>
+
+	<p><button type="submit" name="operation" value="reset">Reset</button>
   </form>
 </body>
 </html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+  <title>Result | Online Calculator</title>
+</head>
+<body>
+  <h1>Result</h1>
+  <p> <%= @resultString %>
+  <form action="/memory" method="POST">
+  	<input type="hidden" value="<%=@result%>" name="result">
+	<button type="submit" name="save">Save Result</button>
+</form>
+</body>
+</html>

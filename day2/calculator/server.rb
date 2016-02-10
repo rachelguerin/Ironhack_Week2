@@ -3,34 +3,50 @@ require 'sinatra/reloader' if development?
 require 'pry' if development?
 require_relative './lib/calc'
 
-get '/' do
+enable(:sessions)
+
+get '/:name' do
+	session[:name] = params[:name]
+	calc = Calculator.new(session[:name])
+	@retrieved_val = calc.retrieve 
 	erb(:home)
 end
 
 post '/calculate' do
 	operation = params[:operation]
+	calc = Calculator.new(session[:name])
+	first = params[:first_num].to_f 
+	second = params[:second_num].to_f
 	case operation
-	when 'add'
-		first = params[:first_add].to_f
-		second = params[:second_add].to_f
-		result = Calculator.add(first,second)
-		"#{first} + #{second} = #{result}"
+	when 'add'	
+		@result = calc.add(first,second)
+		@resultString = "#{first} + #{second} = #{@result}"
+		erb (:result)
 	when 'sub'
-		first = params[:first_sub].to_f
-		second = params[:second_sub].to_f
-		result = Calculator.sub(first,second)
-		"#{first} - #{second} = #{result}"
+		@result = calc.sub(first,second)
+		@resultString = "#{first} - #{second} = #{@result}"
+		erb (:result)
 	when 'mult'
-		first = params[:first_mult].to_f
-		second = params[:second_mult].to_f
-		result = Calculator.mult(first,second)
-		"#{first} * #{second} = #{result}"
+		@result = calc.mult(first,second)
+		@resultString = "#{first} * #{second} = #{@result}"
+		erb (:result)
 	when 'div'
-		first = params[:first_div].to_f
-		second = params[:second_div].to_f
-		result = Calculator.div(first,second)
-		"#{first} / #{second} = #{result}"
+		@result = calc.div(first,second)
+		@resultString = "#{first} / #{second} = #{@result}"
+		erb (:result)
+	when 'reset'
+		calc.reset
+		erb(:home)
 	end
+	
+end
+
+post '/memory' do
+	calc = Calculator.new(session[:name])
+	@result = params[:result]
+	calc.save(@result)
+	@retrieved_val = calc.retrieve 
+	erb(:home)
 end
 
 
