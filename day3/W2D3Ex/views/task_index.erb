@@ -1,0 +1,15 @@
+<h1>Welcome to your To Do list</h1>
+<ul><form action="/complete" method="POST">
+	<% @todo_list.each do |task| %>
+	<li> <%= task.content%> <%= task.complete%> 
+	<button type="submit" name="complete" value=<%="#{task.id}"%>>Complete</button>
+	<% if task.complete? %>
+		<button type="submit" name="delete" value=<%="#{task.id}"%>>Delete</button>
+	<% end %>
+
+
+	</li>
+	<% end %>
+
+</form></ul>
+<p><a href="./new_task">Add new task</a></p>
